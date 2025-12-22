@@ -8,4 +8,5 @@ a = list(map(int, input().split(' ')))
 
 a[::2], a[1::2] = a[1::2], a[::2]
 
-print(a)a
+
+print(*a)
