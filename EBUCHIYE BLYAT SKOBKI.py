@@ -1,7 +1,6 @@
 s = list(map(str, input()))
 
 pairs = {')': '(', ']': '[', '}': '{', '>': '<'}
-brackets = list(pairs.keys()) + list(pairs.values())
 
 st = []
 ok = True
@@ -17,8 +16,7 @@ for i in range(len(s)):
             break
         st.pop()
     else:
-        ok = False
-        break
+        continue
 
 if ok and len(st) == 0:
     print("YES")
