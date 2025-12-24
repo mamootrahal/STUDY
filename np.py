@@ -16,12 +16,23 @@ def InputMatrix(typeX):
             data.append(list(map(typeX, line.split())))
     return np.array(data, dtype=typeX)
 
-nums = list(map(int, input().split()))
 
-cur = best = nums[0]
-for x in nums[1:]:
-    cur = max(x, cur + x)
-    best = max(best, cur)
 
-print(best)
-print(nums[1:])
+k = int(input())
+A = InputMatrix(int)
+n, m = A.shape
+
+out_rows = int(np.ceil(n / k))
+out_cols = int(np.ceil(m / k))
+out = np.empty((out_rows, out_cols), dtype=int)
+
+r = 0
+for i in range(0, n, k):
+    c = 0
+    for j in range(0, m, k):
+        out[r, c] = A[i:i+k, j:j+k].sum()
+        c += 1
+    r += 1
+
+for row in out:
+    print(*row)
