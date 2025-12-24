@@ -1,4 +1,11 @@
 import numpy as np
+import warnings
+
+
+def IgnoreNanInfs():
+    warnings.filterwarnings("ignore")
+    warnings.simplefilter("ignore")
+    np.seterr(all='ignore')
 
 def InputMatrixFloat():
     data = []

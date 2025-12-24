@@ -1,29 +1,15 @@
 import numpy as np
+# import warnings
+# warnings.filterwarnings("ignore")
+# warnings.simplefilter("ignore")
+# np.seterr(all='ignore')
 
-def cosd(x, y):
-    return x @ y / (np.linalg.norm(x) * np.linalg.norm(y))
+def get_nearest (l):
+    t = l.copy()
+    l= np.abs(l)
+    i = np.where(l == np.min(l))[0][0]
+    min_val = t[i]
+    return min_val
 
-data = []
-while True:
-    try:
-        line = input()
-    except EOFError:
-        break
-    line = line.strip()
-    if line:
-        data.append(list(map(float, line.split())))
-
-A = np.array(data, dtype=float)
-
-ans = float(0)
-Ans = np.empty(A.shape[0], dtype=float)
-
-for i in range(A.shape[0] - 1):
-    Ans[i] = cosd(A[i], A[i+1])
-
-ans = np.max(Ans)
-
-if ans >= 0.0 and ans <= 1.0:
-    print(f"{ans:.2f}")
-else:
-    print("No solution")
+A = np.array(list(map(int, input().split())))
+print(get_nearest(A))

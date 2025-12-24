@@ -1,6 +1,7 @@
-lines = [[1, 2, 3],
-         [4, 5, 6],
-         [7, 8, 9]]
+import numpy as np
+# import warnings
+# warnings.filterwarnings("ignore")
+# warnings.simplefilter("ignore")
+# np.seterr(all='ignore')
 
 
-print(lines[1:])
