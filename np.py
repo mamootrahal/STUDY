@@ -4,12 +4,24 @@ import numpy as np
 # warnings.simplefilter("ignore")
 # np.seterr(all='ignore')
 
-def get_nearest (l):
-    t = l.copy()
-    l= np.abs(l)
-    i = np.where(l == np.min(l))[0][0]
-    min_val = t[i]
-    return min_val
+def InputMatrix(typeX):
+    data = []
+    while True:
+        try:
+            line = input()
+        except EOFError:
+            break
+        line = line.strip()
+        if line:
+            data.append(list(map(typeX, line.split())))
+    return np.array(data, dtype=typeX)
 
-A = np.array(list(map(int, input().split())))
-print(get_nearest(A))
+nums = list(map(int, input().split()))
+
+cur = best = nums[0]
+for x in nums[1:]:
+    cur = max(x, cur + x)
+    best = max(best, cur)
+
+print(best)
+print(nums[1:])
