@@ -1,15 +1,10 @@
-import pandas as pd
+nums = [3,2,4]
 
-def mean_xy_with_error(x, y):
+class Solution(object):
+    def twoSum(self, nums, target):
+        for i in range(len(nums)):
+            for j in range(i + 1, len(nums)):
+                if nums[i] + nums[j] == target:
+                    return [i, j]
 
-    s = (x + y)/2*(1+error)  
-
-    error += 0.01
-
-    return s
-
-error = 0.05
-
-print(mean_xy_with_error(1,2))
-
-
+print(Solution().twoSum(nums, 6))
