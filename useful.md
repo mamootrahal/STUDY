@@ -1,0 +1,1 @@
+python -m PyInstaller --onefile --name linear_trainer main.py
