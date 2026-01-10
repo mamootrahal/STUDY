@@ -20,12 +20,11 @@ df = pd.read_csv("input.csv")  # stdin — это “файл”, pandas уме�
 # "статистика по числам", df.describe())   # статистика по числам
 #print(df.columns.tolist())
 #print([repr(c) for c in df.columns])
-c = {"Имя" : 0, "Возраст" : 0, "Балл" : 0}
+#print(df)
 
-for x in df:
-    for j in range(len(df.loc[:, x])):
-        val = df.loc[:, x].iloc[j]
-        if pd.isna(val): 
-            c[x] += 1
+mean = df.pivot_table(index="brand", values = "price", aggfunc="mean")
+#mean = mean.reset_index()
 
-print(pd.DataFrame(c.items(), columns=['Название_колонки', 'Количество_NaN']).to_csv(index=False))
+#print(mean)
+
+print(round(mean.loc["chevrolet"].iloc[0], 2))
