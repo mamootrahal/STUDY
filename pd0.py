@@ -22,9 +22,17 @@ df = pd.read_csv("input.csv")  # stdin — это “файл”, pandas уме�
 #print([repr(c) for c in df.columns])
 #print(df)
 
-mean = df.pivot_table(index="brand", values = "price", aggfunc="mean")
-#mean = mean.reset_index()
+brands = (df.drop_duplicates(subset=["brand"])).loc[:, "brand"].sort_values()
+#colors = df.drop_duplicates(subset=["color"]).loc[:, "color"]
+#brandList = brands.tolist()
+ans = dict(zip(brands, [0]*len(brands)))
 
-#print(mean)
+for x in brands:
+    df1 = df.loc[df["brand"] == x]
+    df1 = df1.drop_duplicates(subset = "color")
+    ans[x] = len(df1)
 
-print(round(mean.loc["chevrolet"].iloc[0], 2))
+print(ans)
+
+#print(df.groupby("brand")["color"].nunique().to_dict())
+
