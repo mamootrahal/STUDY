@@ -1,13 +1,6 @@
-price,brand,mileage,color
-23500,ford,12836.0,blue
-21400,gmc,54332.0,gray
-26900,ford,41496.0,silver
-56700,ford,13884.0,white
-35000,ford,14359.0,white
-36400,ford,36616.0,black
-12800,ford,24765.0,silver
-14200,chevrolet,28013.0,silver
-12500,nissan,34460.0,gray
-16400,dodge,23369.0,silver
-24205,ford,22805.0,silver
-22700,ford,39733.0,white
+ID,Name,Year Published,Rating Average,Complexity Average,Domains
+999.0,Panda Monium,1994.0,"5,41",1,Children's Games
+154479.0,Piña Pirata,2014.0,"6,07","1,25",Family Games
+135.0,Kontor,1999.0,"5,96","2,21",Strategy Games
+171011.0,Favor of the Pharaoh,2015.0,"6,80",2,Family Games
+308765.0,Praga Caput Regni,2020.0,"8,33","3,67",Strategy Games

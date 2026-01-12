@@ -22,17 +22,18 @@ df = pd.read_csv("input.csv")  # stdin — это “файл”, pandas уме�
 #print([repr(c) for c in df.columns])
 #print(df)
 
-brands = (df.drop_duplicates(subset=["brand"])).loc[:, "brand"].sort_values()
-#colors = df.drop_duplicates(subset=["color"]).loc[:, "color"]
-#brandList = brands.tolist()
-ans = dict(zip(brands, [0]*len(brands)))
 
-for x in brands:
-    df1 = df.loc[df["brand"] == x]
-    df1 = df1.drop_duplicates(subset = "color")
-    ans[x] = len(df1)
-
-print(ans)
-
-#print(df.groupby("brand")["color"].nunique().to_dict())
-
+g = df.groupby("Domains")["Name"]
+g1 = pd.DataFrame(g.agg("count")).sort_values("Name", ascending=False).reset_index()
+#print(g1)
+for i in range(1, len(g1)):
+    #print(g1.iloc[i-1].tolist()[1], g1.iloc[i].tolist()[1])
+    if g1.iloc[i-1].tolist()[1] == g1.iloc[i].tolist()[1]:
+        print(*g1.iloc[i-1].to_list())
+        print(*g1.iloc[i].to_list())
+        break
+    elif g1.iloc[i-1].tolist()[1] != g1.iloc[i].tolist()[1]:
+        print(*g1.iloc[i-1].to_list())
+        break
+    else:
+        break
