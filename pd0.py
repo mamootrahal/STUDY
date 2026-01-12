@@ -26,14 +26,16 @@ df = pd.read_csv("input.csv")  # stdin — это “файл”, pandas уме�
 g = df.groupby("Domains")["Name"]
 g1 = pd.DataFrame(g.agg("count")).sort_values("Name", ascending=False).reset_index()
 #print(g1)
-for i in range(1, len(g1)):
-    #print(g1.iloc[i-1].tolist()[1], g1.iloc[i].tolist()[1])
-    if g1.iloc[i-1].tolist()[1] == g1.iloc[i].tolist()[1]:
-        print(*g1.iloc[i-1].to_list())
-        print(*g1.iloc[i].to_list())
-        break
-    elif g1.iloc[i-1].tolist()[1] != g1.iloc[i].tolist()[1]:
-        print(*g1.iloc[i-1].to_list())
-        break
+#l = len(g1["Name"].drop_duplicates())
+#print(l)
+
+# g2 = g1["Name"].tolist()
+# print(g2)
+
+max = max(g1.loc[:, "Name"])
+
+for i in range(len(g1)):
+    if g1.iloc[i].loc["Name"] == max:
+        print(*g1.iloc[i])
     else:
         break
