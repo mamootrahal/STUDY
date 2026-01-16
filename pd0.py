@@ -4,14 +4,25 @@ import sys
 from io import StringIO
 import math
 
-#ppi  = hxl / diag
+
+
 df = pd.read_csv("input.csv")  # stdin — это “файл”, pandas умеет
-df["ScreenResolution"] = df["ScreenResolution"].str.split().str[-1].str.split("x")
-#print(df.loc[0, "ScreenResolution"][1])
-for i in range(len(df)):
-    l = int(df.loc[i, "ScreenResolution"][0])
-    h = int(df.loc[i, "ScreenResolution"][1])
-    df.loc[i, "ppi"] = math.sqrt(h * h + l* l) / df.loc[i, "Inches"]
+#print(df)
+#print(df["Tectonic regime"])
+s = (
+    df["Tectonic regime"]
+    .astype(str)
+    .str.split(r"\s*/\s*")
+    .explode()
+    .dropna()
+    .str.strip()
+)
+#print(s)
 
-print(round(df["ppi"].mean(), 2))
 
+
+unique_regimes = sorted(s.unique())
+
+print(len(unique_regimes))
+for x in unique_regimes:
+    print(x)
